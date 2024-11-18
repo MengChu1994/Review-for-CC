@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review for CC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #ffe4e1; /* Light pink background */
+      color: #333; /* Dark text for contrast */
+    }
+    h1 {
+      color: #d63384; /* Deep pink for the title */
+    }
+    .button {
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 18px;
+      background-color: #ff69b4; /* Hot pink background for buttons */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #fff; /* White text for buttons */
+    }
+    .button:hover {
+      background-color: #ff1493; /* Deep pink for hover effect */
+    }
+    #generated-review {
+      margin: 20px;
+      font-size: 16px;
+      background-color: #fff0f5; /* Lavender blush background for review box */
+      padding: 20px;
+      border-radius: 10px;
+      color: #333; /* Dark text for review */
+      box-shadow: 0px 0px 10px rgba(255, 105, 180, 0.4);
+    }
+    .review-link {
+      display: block;
+      margin: 20px;
+      padding: 15px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #d63384; /* Deep pink */
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .review-link:hover {
+      background-color: #c21873;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Review for CC</h1>
+
+  <!-- Buttons to Generate Review and Copy -->
+  <button class="button" onclick="generateReview()">Generate Review</button>
+  <button class="button" onclick="copyToClipboard()">Copy to Clipboard</button>
+
+  <!-- Display Generated Review -->
+  <div id="generated-review">Your review will appear here!</div>
+
+  <!-- Yelp and Google Links -->
+  <a href="https://www.yelp.com/writeareview/biz/WdshnXVjeZq-MvVofMzuTA?return_url=https%3A%2F%2Fm.yelp.com%2Fbiz%2Fchubby-cattle-bbq-rowland-heights-rowland-heights-2&review_origin=mobile-site-biz-details-action-button" class="review-link">Leave a Yelp Review</a>
+  <a href="https://search.google.com/local/reviews?placeid=ChIJdb7bHhArw4ARy2xVgbwxdMI&q=google+review+chubby+cattle+rowland+heights&hl=en&gl=US" class="review-link">Leave a Google Review</a>
+
+  <script>
+    // Updated review segments with more variety
+    const serviceReviews = [
+      "CC's service was flawless – she went above and beyond to make sure we felt welcome.",
+      "We were amazed by CC’s kindness and efficiency, always making sure our table was perfectly attended.",
+      "CC was attentive, approachable, and ensured we were comfortable throughout the entire meal.",
+      "It’s rare to find such dedicated service, but CC made every moment pleasant and seamless.",
+      "CC delivered impeccable service with a smile, elevating our dining experience.",
+      "We felt truly valued thanks to CC’s outstanding hospitality and attention to detail.",
+      "CC ensured that every part of our experience was smooth and delightful, truly a top-notch server.",
+      "CC's friendly demeanor and proactive approach made all the difference in our evening.",
+      "From start to finish, CC provided excellent service, making sure we had an unforgettable time."
+    ];
+
+    const foodReviews = [
+      "The A5 Wagyu was unbelievably tender and full of flavor, truly a highlight of the menu.",
+      "The sushi was exceptionally fresh, and the premium meat cuts were a dream for any barbecue lover.",
+      "We couldn’t get enough of the wide range of Wagyu options – each cut was cooked to perfection.",
+      "Every bite of the sushi and sashimi was fresh and flavorful, paired wonderfully with the grilled meats.",
+      "The quality of the meats, especially the limited A5 Wagyu, was phenomenal – every bite melted in our mouths.",
+      "Chubby Cattle’s unlimited Wagyu offerings were incredible, alongside delicious sashimi and appetizers.",
+      "The selection of meats and seafood was extraordinary, with premium options that satisfied every craving.",
+      "The freshness of the sashimi and the marbled richness of the Wagyu made this an unforgettable feast.",
+      "We were blown away by the quality and taste of the dishes – from sushi to barbecue, everything was perfect."
+    ];
+
+    const drinkReviews = [
+      "The drink station had an impressive variety, and the milk tea was a refreshing standout.",
+      "We loved the self-serve drink options – the slushies and sodas paired perfectly with our meal.",
+      "Having so many beverage options, including milk tea and iced slushies, was a fantastic addition.",
+      "The drink bar offered a range of refreshing choices, from milk tea to sparkling sodas.",
+      "The self-serve drinks, especially the milk tea and smoothies, were a delightful complement to the food.",
+      "We appreciated the freedom to choose from so many beverages – the milk tea was exceptional.",
+      "The drink bar was well-stocked with everything from creamy milk tea to fizzy sodas and icy slushies.",
+      "The variety of drinks was a fun surprise, and we especially enjoyed the slushie options.",
+      "From sweet milk tea to crisp sodas, the drink selection perfectly rounded out the dining experience."
+    ];
+
+    const environmentReviews = [
+      "The cozy yet modern decor created a vibrant and inviting atmosphere perfect for any occasion.",
+      "The restaurant was spotless, with a sleek design that added to the upscale dining vibe.",
+      "We loved the bright and modern setting, which made the entire experience feel special.",
+      "Chubby Cattle’s chic decor and lively atmosphere set the stage for an unforgettable meal.",
+      "The environment was lively yet intimate, perfect for a group dinner or a casual night out.",
+      "The modern aesthetic of the restaurant was both comfortable and stylish, adding to the ambiance.",
+      "The spacious, well-designed layout made it easy to relax and enjoy our time together.",
+      "We were impressed by the attention to detail in the decor, creating a warm and elegant setting.",
+      "The upbeat, welcoming environment made our evening even more enjoyable and memorable."
+    ];
+
+    // Function to generate random review
+    function generateReview() {
+      const service = serviceReviews[Math.floor(Math.random() * serviceReviews.length)];
+      const food = foodReviews[Math.floor(Math.random() * foodReviews.length)];
+      const drink = drinkReviews[Math.floor(Math.random() * drinkReviews.length)];
+      const environment = environmentReviews[Math.floor(Math.random() * environmentReviews.length)];
+
+      const review = `${service} The food was fantastic. ${food} We loved the drinks. ${drink} Lastly, the atmosphere was spot on. ${environment}`;
+      document.getElementById('generated-review').innerText = review;
+    }
+
+    // Function to copy review to clipboard
+    function copyToClipboard() {
+      const reviewText = document.getElementById('generated-review').innerText;
+      navigator.clipboard.writeText(reviewText);
+      alert("Review copied to clipboard!");
+    }
+  </script>
+
+</body>
+</html>
